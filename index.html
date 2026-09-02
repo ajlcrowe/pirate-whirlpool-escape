@@ -1217,7 +1217,7 @@
     clearInterval(timerInterval);
     tomeOverlay.hidden = false;
     const h = HABITATS[card.habitat];
-    const labels = card.type === 'tf' ? ['True','False'] : ['A','B','C'];
+    const labels = ['A','B','C'];
     tomeBody.innerHTML = `
       <div class="tome-tag" style="background:${h.color}">${ICONS[card.habitat]}<span>${h.name}${ctx.isWhirlpool ? ' - Whirlpool' : ''}</span></div>
       <div class="tome-title">Poseidon's voice booms from the tome...</div>
@@ -1225,7 +1225,10 @@
       <div class="tome-question">${card.question}</div>
       <div class="timer-track"><div class="timer-fill" id="timerFill"></div></div>
       <div class="answers" id="answersWrap">
-        ${card.options.map((opt,i)=>`<button class="answer-btn" data-i="${i}"><span class="k">${labels[i]}.</span><span>${opt}</span></button>`).join('')}
+        ${card.options.map((opt,i)=> card.type === 'tf'
+          ? `<button class="answer-btn" data-i="${i}"><span>${opt}</span></button>`
+          : `<button class="answer-btn" data-i="${i}"><span class="k">${labels[i]}.</span><span>${opt}</span></button>`
+        ).join('')}
       </div>
       <div class="reveal" id="revealBox">
         <div class="verdict" id="verdictLine"></div>
