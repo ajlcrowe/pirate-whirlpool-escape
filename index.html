@@ -80,20 +80,77 @@
     line-height:1.5;
   }
 
-  /* ---------- Sample banner ---------- */
+  /* ---------- How-to-play banner ---------- */
   .sample-note{
     background: linear-gradient(180deg, rgba(205,161,63,.16), rgba(205,161,63,.06));
     border:1px solid rgba(205,161,63,.4);
-    border-radius:12px;
-    padding:10px 16px;
+    border-radius:14px;
+    padding:18px 24px 20px;
     font-size:.86rem;
     color:#e9d9ae;
     text-align:center;
-    max-width:720px;
+    max-width:760px;
     margin:0 auto;
     line-height:1.5;
   }
   .sample-note b{ color: var(--gold-bright); }
+  .howto-title{
+    font-family:'Pirata One', serif;
+    font-size:1.3rem;
+    color: var(--gold-bright);
+    margin:0 0 12px;
+    letter-spacing:.02em;
+  }
+  .howto-steps{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(220px, 260px));
+    justify-content:center;
+    gap:16px 28px;
+    margin:0 0 16px;
+  }
+  .howto-step{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    text-align:left;
+  }
+  .howto-step .step-num{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:50%;
+    background: var(--gold);
+    color:#3a2a10;
+    font-family:'Baloo 2';
+    font-weight:800;
+    font-size:.8rem;
+    display:flex; align-items:center; justify-content:center;
+    margin-top:1px;
+  }
+  .howto-step p{
+    margin:0;
+    font-size:.82rem;
+    line-height:1.45;
+    color:#e9d9ae;
+  }
+  .manual-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color:#3a2a10;
+    border:none;
+    border-radius:999px;
+    padding:10px 24px;
+    font-family:'Baloo 2';
+    font-weight:800;
+    font-size:.88rem;
+    text-decoration:none;
+    cursor:pointer;
+    box-shadow: 0 6px 16px -6px rgba(205,161,63,.55);
+  }
+  .manual-btn:hover{ filter:brightness(1.06); }
+  .manual-btn:focus-visible{ outline:3px solid var(--whirl); outline-offset:2px; }
+  .manual-btn svg{ width:16px; height:16px; flex:none; }
 
   /* ---------- Setup screen ---------- */
   .setup-screen{
@@ -500,7 +557,17 @@
   </div>
 
   <div class="sample-note">
-    <b>Full deck loaded:</b> all 80 cards from your MDEI Facts sheet are live below -- 20 per habitat, each with a real, cited source (NOAA, NOAA Fisheries, EPA, Smithsonian Ocean, National Geographic Kids, AMNH). Correct-answer cards leave the deck for your hand; the rest cycle back for replay.
+    <h2 class="howto-title">How to Play</h2>
+    <div class="howto-steps">
+      <div class="howto-step"><span class="step-num">1</span><p>Roll the die and sail your pawn along the spiral path toward the Pirate Docks.</p></div>
+      <div class="howto-step"><span class="step-num">2</span><p>Land on a colored circle to answer Poseidon's question -- correct keeps the card, wrong sends it back to the deck.</p></div>
+      <div class="howto-step"><span class="step-num">3</span><p>Once you hold 3 cards, spend them to drop a whirlpool and pull back a rival -- watch out for whirlpools too.</p></div>
+      <div class="howto-step"><span class="step-num">4</span><p>Reach the Docks with all four habitat colors in hand to win.</p></div>
+    </div>
+    <a class="manual-btn" href="instruction_manual.pdf" download="instruction_manual.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3a2a10" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 21h14"/></svg>
+      Download Instruction Manual (PDF)
+    </a>
   </div>
 
   <div class="setup-screen" id="setupScreen">
