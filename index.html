@@ -768,9 +768,18 @@
     ],
   };
 
+  function shuffled(arr){
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   function freshDecks(){
     const d = {};
-    HABITAT_ORDER.forEach(h => { d[h] = DECKS_SEED[h].map(c => Object.assign({habitat:h}, c)); });
+    HABITAT_ORDER.forEach(h => { d[h] = shuffled(DECKS_SEED[h].map(c => Object.assign({habitat:h}, c))); });
     return d;
   }
 
@@ -1128,7 +1137,7 @@
     if (deck.length === 0){
       // Every card in this habitat is currently held in a hand -- reshuffle a fresh
       // set back into the deck so play can continue (repeats are expected by design).
-      deck = state.decks[habitat] = DECKS_SEED[habitat].map(c => Object.assign({habitat}, c));
+      deck = state.decks[habitat] = shuffled(DECKS_SEED[habitat].map(c => Object.assign({habitat}, c)));
     }
     const card = deck.shift();
     showTome(player, card, ctx);
