@@ -257,25 +257,6 @@
     cursor:default;
   }
   .space:hover{ border-color: rgba(255,255,255,.35); }
-  .space.docks-badge{
-    position:absolute;
-    transform: translate(-50%,-115%);
-    display:flex; align-items:center; gap:4px;
-    background: var(--gold);
-    color:#3a2a10;
-    font-family:'Baloo 2';
-    font-weight:800;
-    font-size:.62rem;
-    text-transform:uppercase;
-    letter-spacing:.04em;
-    padding:3px 8px 3px 5px;
-    border-radius:999px;
-    border:1.5px solid rgba(58,42,22,.4);
-    box-shadow:0 3px 8px rgba(0,0,0,.45);
-    pointer-events:none;
-    white-space:nowrap;
-  }
-  .space.docks-badge svg{ width:12px; height:12px; }
   .space.has-whirl::after{
     content:"";
     position:absolute; inset:-6px;
@@ -850,27 +831,27 @@
      pixel position (as % of the board image) of that space's circle, in
      spiral order from the Ancient Vault out to the Pirate Docks. */
   const BOARD_SPACES = [
-    {x:26.17, y:64.54, type:'shore'},
-    {x:35.08, y:72.08, type:'coral'},
-    {x:46.17, y:75.67, type:'deep'},
-    {x:57.79, y:74.17, type:'open'},
-    {x:67.67, y:67.96, type:'shore'},
-    {x:73.67, y:58.08, type:'deep'},
-    {x:74.58, y:46.42, type:'coral'},
-    {x:70.17, y:35.62, type:'shore'},
-    {x:61.38, y:28.08, type:'open'},
-    {x:50.12, y:25.29, type:'deep'},
-    {x:38.92, y:28.62, type:'coral'},
-    {x:31.21, y:37.29, type:'shore'},
-    {x:29.46, y:48.79, type:'open'},
-    {x:34.04, y:59.33, type:'deep'},
-    {x:43.92, y:65.54, type:'coral'},
-    {x:55.46, y:64.83, type:'shore'},
-    {x:63.71, y:56.88, type:'open'},
-    {x:64.71, y:45.46, type:'deep'},
-    {x:57.42, y:36.54, type:'coral'},
-    {x:46.08, y:35.83, type:'open'},
     {x:38.79, y:44.50, type:'shore'},
+    {x:46.08, y:35.83, type:'open'},
+    {x:57.42, y:36.54, type:'coral'},
+    {x:64.71, y:45.46, type:'deep'},
+    {x:63.71, y:56.88, type:'open'},
+    {x:55.46, y:64.83, type:'shore'},
+    {x:43.92, y:65.54, type:'coral'},
+    {x:34.04, y:59.33, type:'deep'},
+    {x:29.46, y:48.79, type:'open'},
+    {x:31.21, y:37.29, type:'shore'},
+    {x:38.92, y:28.62, type:'coral'},
+    {x:50.12, y:25.29, type:'deep'},
+    {x:61.38, y:28.08, type:'open'},
+    {x:70.17, y:35.62, type:'shore'},
+    {x:74.58, y:46.42, type:'coral'},
+    {x:73.67, y:58.08, type:'deep'},
+    {x:67.67, y:67.96, type:'shore'},
+    {x:57.79, y:74.17, type:'open'},
+    {x:46.17, y:75.67, type:'deep'},
+    {x:35.08, y:72.08, type:'coral'},
+    {x:26.17, y:64.54, type:'shore'},
     {x:19.83, y:42.50, type:'coral'},
     {x:23.42, y:31.33, type:'deep'},
     {x:30.96, y:22.42, type:'open'},
@@ -1022,14 +1003,6 @@
         : (HABITATS[type] ? HABITATS[type].name + ' space' : type + ' space');
       s.setAttribute('aria-label', spaceLabel + ', space ' + i + ' of ' + SPACE_COUNT);
       boardEl.appendChild(s);
-      if (type === 'docks'){
-        const badge = document.createElement('div');
-        badge.className = 'space docks-badge';
-        badge.style.left = c.x+'%'; badge.style.top = c.y+'%';
-        badge.setAttribute('aria-hidden','true');
-        badge.innerHTML = ICONS.ship.replace(/stroke="#fff"/g,'stroke="#3a2a10"') + '<span>Docks</span>';
-        boardEl.appendChild(badge);
-      }
     }
 
     state && state.players.forEach(p=>{
